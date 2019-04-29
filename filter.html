@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>FILTER</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+
+    <script>
+
+
+        // .map(), .filter() y .reduce() no modifican el array original
+        // .filter() retorna un array que incluye sólo aquellos elementos del array inicial que cumplen una lógica, es decir, cuando la función que recibe como argumento retorna true
+
+
+
+
+
+
+        // ejemplo filter() - retorna sólo los múltiplos de 3
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        const evenNumbers = numbers.filter(number => {
+            if (number % 3 === 0) return true
+        })
+        // Equivalente a: const evenNumbers = numbers.filter(number => number % 3 === 0)
+
+        console.log('Los múltiplos de 3 son:\n', evenNumbers)
+
+
+
+
+
+
+
+
+
+        // ejemplo filter() - retorna sólo los mayores de edad
+        const people = [
+            { name: "Candice", age: 25 },
+            { name: "Tammy", age: 30 },
+            { name: "Allen", age: 20 },
+            { name: "Nettie", age: 21 },
+            { name: "Stuart", age: 17 },
+            { name: "Bill", age: 19 }
+        ]
+
+        const ofDrinkingAge = people.filter(person => person.age >= 21)
+
+        console.log('Los mayores de edad son:\n', ofDrinkingAge)
+
+
+
+
+
+
+
+
+
+
+        // ejemplo filter() - retorna sólo edificios con piscina
+        const places = [
+            {
+                title: "Awesome Suite 20' away from la Rambla",
+                price: 200,
+                type: "Private Room",
+                pool: true,
+                garage: false
+            },
+            {
+                title: "Private apartment",
+                price: 190,
+                type: "Entire Place",
+                pool: true,
+                garage: true
+            },
+            {
+                title: "Apartment with awesome views",
+                price: 400,
+                type: "Entire Place",
+                pool: false,
+                garage: false
+            }
+        ]
+
+
+        const poolFilter = places.filter(thePlace => thePlace.pool)
+
+        console.log('Los edificios con piscina son:\n', poolFilter)
+
+
+
+
+
+
+
+
+
+
+
+        // ejemplo filter() - retorna sólo impares mayores de 42
+
+        const randomNumbers = [1, 60, 112, 123, 100, 99, 73, 45];
+        const numbersResult = randomNumbers.filter(number => number % 2 != 0 && number > 42)
+
+        console.log('Los impares mayores de 42 son:\n', numbersResult)
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

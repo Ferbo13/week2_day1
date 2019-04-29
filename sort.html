@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SORT</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+
+    <script>
+
+
+        // .sort() reordena los elementos de un array en base al formato UNICODE
+
+
+
+
+
+
+
+        // lógica interna de comparación en sort()
+        /*
+        const numbers0 = [100, 100, 90, 80, 70]
+
+        numbers0.sort((a, b) => {
+
+            console.log('----- nueva iteración ------')
+
+            console.log('El estado actual del array es: ', numbers0.toString())
+
+            console.log('Primer valor:', a, 'Segundo valor:', b)
+
+            const result = a - b
+
+            if (result > 0) console.log('El resultado de restar', a, '-', b, 'es positivo (', result, '): INTERCAMBIA ORDEN DE VALORES')
+            if (result < 0) console.log('El resultado de restar', a, '-', b, 'es negativo (', result, '): INTERCAMBIA ORDEN DE VALORES')
+            if (result === 0) console.log('El resultado de restar', a, '-', b, 'es equivalente (', result, '): MANTIENE ORDEN DE VALORES')
+
+            return result
+
+        })      
+
+        console.log('Resultado final: ', numbers0.toString() )
+        */
+
+
+
+
+
+
+        // ejemplo sort() - reordena números según equivalencia UNICODE
+        const numbers1 = [22, 23, 99, 68, 1, 0, 9, 112, 223, 64, 18]
+        numbers1.sort()                     // si no recibe función comparadora, se basa en UNICODE
+
+        console.log('Valores ordenados (UNICODE):\n', numbers1)
+
+
+
+
+
+
+
+
+
+        // ejemplo sort() - reordena números según lógica de función argumentada (creciente)
+        const numbers2 = [22, 23, 99, 68, 1, 0, 9, 112, 223, 64, 18]
+        numbers2.sort((a, b) => a - b)      // si a - b es mayor que 0, a es mayor que b, y mueve b al final 
+
+        console.log('Valores ordenados (CRECIENTE):\n', numbers2)
+
+
+
+
+
+
+
+
+        // ejemplo sort() - reordena números según lógica de función argumentada (decreciente)
+        const numbers3 = [22, 23, 99, 68, 1, 0, 9, 112, 223, 64, 18]
+        numbers3.sort((a, b) => b - a)      // si b - a es mayor que 0, b es mayor que a, y mueve a al final
+
+        console.log('Valores ordenados (DECRECIENTE):\n', numbers3)
+
+
+
+
+
+
+
+
+
+        // ejemplo sort() - reordena strings según equivalencia UNICODE
+        const words1 = ["Hello", "Goodbye", "First", "A", "a", "Second", "Third", "f", "hello"]
+        words1.sort()                       // si no recibe función comparadora, se basa en UNICODE
+
+        console.log('Strings ordenados (UNICODE):\n', words1)
+
+
+
+
+
+
+
+
+        // ejemplo sort() - reordena strings según equivalencia UNICODE
+        const words2 = ["Hello", "Goodbye", "First", "A", "a", "Second", "Third", "f", "hello"]
+        words2.sort().reverse()
+
+        console.log('Strings ordenados (DECRECIENTE):\n', words2)
+
+
+        // idéntico al anterior, pero creando un nuevo array e inmutabilizando el original
+        const newWordsArray = [...words2].reverse()
+
+        console.log('Nuevo Array reordenado (CRECIENTE):\n', newWordsArray)
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

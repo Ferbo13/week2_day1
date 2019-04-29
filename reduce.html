@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>REDUCE</title>
+</head>
+
+<body>
+
+
+	<script>
+
+
+		// .map(), .filter() y .reduce() no modifican el array original
+
+
+
+
+
+
+		// ejemplo reduce() - acumula sumatorio de valores y retorna el resultado final
+		const numbers = [2, 4, 6, 8, 2, 10, 4]
+
+		const totalSum = numbers.reduce((ac, currentValue) => {
+			console.log("El acumulador es ", ac, " y el valor actual es ", currentValue)
+			return ac + currentValue
+		})
+
+		console.log("El total acumulado de sumatorios 1 es: ", totalSum)
+
+
+
+
+
+
+
+
+		// ejemplo reduce() - acumula sumatorio de valores y retorna el resultado final OJO! => sumándole 100
+
+		const totalSumPlus100 = numbers.reduce((ac, currentValue) => {
+			console.log("El acumulador es ", ac, " y el valor actual es ", currentValue)
+			return ac + currentValue
+		}, 100)	// argumento opcional que establece el valor inicial del acumulador
+
+		console.log("El total acumulado de sumatorios 2 es: ", totalSumPlus100)
+
+
+
+
+
+
+
+
+		// ejemplo reduce() - acumula exponente de los valores
+
+		const totalExp = numbers.reduce((ac, current) => ac * current)
+		console.log("El total acumulado de exponentes es: ", totalExp)
+
+
+
+
+
+
+
+
+		// ejemplo reduce() - acumula strings
+
+		const words = ["This", "is", "one", "big", "string"]
+		const bigString = words.reduce((ac, word) => ac + word)
+
+		console.log("El string acumulado es: ", bigString)
+
+
+
+
+
+
+
+
+
+		// ejemplo reduce() - acumula edades desde objeto, partiendo de un valor inicial 0
+
+		const people = [
+			{ name: "Candice", age: 25 },
+			{ name: "Tammy", age: 30 },
+			{ name: "Allen", age: 49 },
+			{ name: "Nettie", age: 21 },
+			{ name: "Stuart", age: 17 }
+		]
+
+		const sumAges = people.reduce((ac, person) => {
+			return ac + person.age
+		}, 0)
+
+		console.log("Las edades acumuladas suman", sumAges, 'años')
+
+
+
+
+
+
+
+
+
+		// ejemplo reduce() - acumula calorías desde objeto, partiendo de un valor inicial 0
+
+		const menu = [
+			{ name: "Carrots", calories: 150 },
+			{ name: "Steak", calories: 350 },
+			{ name: "Broccoli", calories: 120 },
+			{ name: "Chicken", calories: 250 },
+			{ name: "Pizza", calories: 520 }
+		]
+
+		const averageCals = menu.reduce((ac, menuItem) => {
+			return ac + menuItem.calories
+		}, 0)
+
+		console.log("Las calorías medias son", averageCals / menu.length)
+
+
+
+
+
+
+
+
+
+
+
+
+		// ejemplo reduce() - acumula ratings desde objeto, partiendo de un valor inicial 0
+
+		const product = {
+			name: "AmazonBasics Apple Certified Lightning to USB Cable",
+			price: 7.99,
+			manufacter: "Amazon",
+			reviews:
+				[
+					{
+						user: "Pavel Nedved",
+						comments: "It was really usefull, strongly recommended",
+						rate: 4
+					},
+					{
+						user: "Alvaro Trezeguet",
+						comments: "It lasted 2 days",
+						rate: 1
+					},
+					{
+						user: "David Recoba",
+						comments: "Awesome",
+						rate: 5
+					},
+					{
+						user: "Jose Romero",
+						comments: "Good value for money",
+						rate: 4
+					},
+					{
+						user: "Antonio Cano",
+						comments: "It broked really fast",
+						rate: 2
+					},
+				]
+		}
+
+		const totalReviews = product.reviews.reduce((sum, elem) => {
+			return sum + elem.rate
+		}, 0)
+		const averageRate = totalReviews / product.reviews.length
+
+		console.log(`El rating medio es: ${averageRate} puntos`)
+
+	</script>
+
+
+</body>
+
+</html>

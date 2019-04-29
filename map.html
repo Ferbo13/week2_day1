@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>MAP</title>
+</head>
+
+<body>
+
+
+	<script>
+
+
+		// .map(), .filter() y .reduce() no modifican el array original
+		// .map() hace uso de los valores del array retornando un nuevo array de la misma longitud
+
+
+		// ejemplo map() - duplica valores
+		const numbersArray = [1, 2, 3]
+		const doubleNumbers = numbersArray.map(number => number * 2)
+		console.log("Valores duplicados:\n", doubleNumbers)
+
+
+
+
+		// ejemplo map() - pasa a mayúsculas
+		const citiesArray = ['madrid', 'bilbao', 'gijón']
+		const citiesUppercase = citiesArray.map(city => city.toUpperCase())
+		console.log("Ciudades en mayúsculas:\n", citiesUppercase)
+
+
+		// ejemplo map() - primera letra mayúscula
+		/*
+        const citiesCapitalize = cities.map(city => {
+            const firstL = city.charAt(0).toUpperCase()
+            const rest = city.substring(1, city.length)
+            return firstL + rest
+        })
+		*/
+		const citiesCapitalize = citiesArray.map(city => city.charAt(0).toUpperCase() + city.substring(1, city.length))
+		console.log("Ciudades en mayúscula:\n", citiesCapitalize)
+
+
+
+
+
+
+		// ejemplo map() - calcula nota media (60% examen final, 40% proyectos)
+		const students = [
+			{
+				name: "Tony Parker",
+				firstProject: 80,
+				secondProject: 75,
+				finalExam: 90
+			},
+			{
+				name: "Marc Barchini",
+				firstProject: 84,
+				secondProject: 65,
+				finalExam: 65
+			}
+		]
+
+
+
+		const studentNames = students.map(student => student.name)
+		console.log(studentNames)
+		const finalResults = students.map(student => {
+			const projectsAvg = (student.firstProject + student.secondProject) / 2
+			const finalGrade = student.finalExam * 0.6 + projectsAvg * 0.4
+			const returnedStudent = {
+				...student,
+				finalGrade: finalGrade
+			}
+			return returnedStudent
+		})
+
+		console.log("Calificaciones finales:\n", finalResults)
+
+
+
+
+
+		// ejemplo map() - calcula precio final
+		const drinks = [
+			{
+				id: 1,
+				name: "Coca-cola",
+				cost: .85
+			},
+			{
+				id: 2,
+				name: "Fanta",
+				cost: .81
+			},
+			{
+				id: 3,
+				name: "Cacaolat",
+				cost: .62
+			}
+		]
+
+		const finalPriceDrinks = drinks.map(drink => {
+			const profit = 1.6											// % beneficio 
+			const taxRate = .21											// % impuesto
+			const subtotalDrinkPrice = drink.cost * profit
+			const totalDrinkTax = subtotalDrinkPrice * taxRate
+			const totalDrinkPrice = subtotalDrinkPrice + totalDrinkTax
+
+			const output = {
+				...drink,												// El operador de propagación realiza una copia del objeto
+				subtotal: subtotalDrinkPrice,							// además de las nuevas propiedades por cada bebida
+				tax: totalDrinkTax,
+				price: +totalDrinkPrice.toFixed(2)						// El operador + convierte a tipo numérico (ya que toFixed() retorna tipo sting)
+			}
+
+			return output
+		})
+
+		console.log("Precios finales:\n", finalPriceDrinks)
+
+
+
+
+
+
+
+		// ejemplo map() - lógica que valora las bebidas más costosas
+		const expensiveDrinks = drinks.map(drink => {
+
+			if (drink.cost > .7) {
+				return { ...drink, expensive: true }
+			}
+			else {
+				return { ...drink, expensive: false }
+			}
+
+		})
+
+		console.log("Bebidas costosas:\n", expensiveDrinks)
+
+
+
+
+
+
+
+		// ejemplo map() - lógica que aplica salarios según puesto
+		const employees = [
+			{ name: "Germán", dept: "teacher" },
+			{ name: "Marina", dept: "admissions" },
+			{ name: "Juanjo", dept: "admissions" },
+			{ name: "Sonia", dept: "outcomes" },
+			{ name: "Miriam", dept: "outcomes" },
+			{ name: "Víctor", dept: "pm" }
+		]
+
+		const employeesWithSalaries = employees.map(employee => {
+
+			let salary;
+
+			if (employee.dept === "teacher") salary = 100000	// un condicional con una única instrucción por bloque no requiere bloque
+
+			if (employee.dept === "admissions") salary = 200000
+
+			if (employee.dept === "outcomes") salary = 200000
+
+			if (employee.dept === "pm") salary = 300000
+
+			return {
+				...employee,
+				salary: salary
+			}
+		})
+
+		console.log("Salarios según puesto:\n", employeesWithSalaries)
+
+	</script>
+
+
+</body>
+
+</html>
